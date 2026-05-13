@@ -425,3 +425,876 @@ body {
     justify-content: center;
   }
 }
+
+/* ── LOGO TICKER ── */
+.ticker-section {
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 1.25rem 0;
+  overflow: hidden;
+}
+
+.ticker-section__label {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  color: #6B7280;
+  margin-bottom: 1rem;
+}
+
+.ticker-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+.ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: ticker 20s linear infinite;
+}
+
+.ticker-inner:hover {
+  animation-play-state: paused;
+}
+
+.ticker-inner img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: filter 0.2s;
+}
+
+.ticker-inner img:hover {
+  filter: grayscale(0%);
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── TECHNICAL SPECS ── */
+.tech-specs {
+  background-color: #111827;
+  padding: 5rem 0;
+}
+
+.tech-specs__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.tech-specs__heading {
+  font-family: 'Urbanist', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.tech-specs__sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: #9CA3AF;
+  max-width: 55ch;
+  line-height: 1.65;
+}
+
+/* Specs Table */
+.specs-table {
+  background: #1F2937;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.specs-table__head {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  padding: 0.85rem 1.5rem;
+  background: #374151;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.specs-table__head span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+}
+
+.specs-table__row {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.15s;
+}
+
+.specs-table__row:last-child {
+  border-bottom: none;
+}
+
+.specs-table__row:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.specs-table__row span:first-child {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #E5E7EB;
+}
+
+.specs-table__row span:last-child {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: #9CA3AF;
+}
+
+/* Download Button */
+.tech-specs__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.btn--download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn--download:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .specs-table__head,
+  .specs-table__row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .specs-table__head span:last-child,
+  .specs-table__row span:last-child {
+    font-size: 0.875rem;
+  }
+}
+
+/* ── FEATURES SECTION ── */
+.features-section {
+ 
+  padding: 5rem 0;
+}
+
+.features-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.features-section__heading {
+  font-family: 'Urbanist', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.features-section__sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: #374151;
+  max-width: 60ch;
+  line-height: 1.65;
+}
+
+/* Cards Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.feature-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 2px solid rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.feature-card__icon {
+  width: 40px;
+  height: 40px;
+  background: #EEF0FB;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.feature-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.feature-card h3 {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+}
+
+.feature-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.65;
+}
+
+/* CTA Button */
+.features-section__cta {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.btn--quote {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  border: 2px solid #2B3990;
+  border-radius: 8px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #2B3990;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn--quote:hover {
+  background: #2B3990;
+  color: #ffffff;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   FAQ SECTION — append to styles.css
+   ============================================================ */
+
+/* ── Section wrapper ── */
+.faq-section {
+
+  padding: 96px 2rem;
+}
+
+.faq-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ── Section header ── */
+.faq-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.faq-heading {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: #111827;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.faq-heading-accent {
+  color: #2B3990;
+}
+
+.faq-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6B7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.faq-inline-link {
+  color: #2B3990;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.faq-inline-link:hover {
+  border-color: #2B3990;
+}
+
+/* ── Accordion wrapper ── */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Single FAQ item ── */
+.faq-item {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.faq-item:has(.faq-question[aria-expanded="true"]) {
+  box-shadow: 0 4px 20px rgba(43, 57, 144, 0.08);
+  border-color: rgba(43, 57, 144, 0.15);
+}
+
+/* ── Question button ── */
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+  line-height: 1.5;
+  transition: background 0.15s ease;
+}
+
+.faq-question:hover {
+  background: rgba(43, 57, 144, 0.03);
+}
+
+.faq-question[aria-expanded="true"] {
+  color: #2B3990;
+}
+
+/* ── Chevron icon ── */
+.faq-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #9CA3AF;
+  background: #F3F4F6;
+  transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(180deg);
+  background: #EEF0FB;
+  color: #2B3990;
+}
+
+/* ── Answer panel (collapsed state default) ── */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq-answer > p {
+  overflow: hidden;
+  padding: 0 24px;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: #374151;
+  line-height: 1.75;
+  border-top: 1px solid transparent;
+  transition: padding 0.3s ease, border-color 0.3s ease;
+}
+
+/* ── Answer panel (open state) ── */
+.faq-answer.is-open {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer.is-open > p {
+  padding: 16px 24px 22px;
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+/* ── Catalogue CTA card ── */
+.faq-cta-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.faq-cta-text {
+  flex: 1 1 260px;
+}
+
+.faq-cta-heading {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2vw, 1.375rem);
+  color: #111827;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.faq-cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.faq-cta-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 340px;
+  max-width: 460px;
+}
+
+.faq-email-input {
+  flex: 1;
+  height: 46px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  background: #F9FAFB;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-email-input::placeholder {
+  color: #9CA3AF;
+}
+
+.faq-email-input:focus {
+  border-color: #2B3990;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(43, 57, 144, 0.1);
+}
+
+.faq-cta-btn {
+  height: 46px;
+  padding: 0 22px;
+  background: #2B3990;
+  color: #ffffff;
+  border: 2px solid #2B3990;
+  border-radius: 8px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.faq-cta-btn:hover {
+  background: #1e2a6e;
+  border-color: #1e2a6e;
+  box-shadow: 0 4px 14px rgba(43, 57, 144, 0.3);
+  transform: translateY(-1px);
+}
+
+.faq-cta-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ── Success state for CTA ── */
+.faq-cta-btn.faq-btn-success {
+  background: #16a34a;
+  border-color: #16a34a;
+  pointer-events: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .faq-section {
+    padding: 72px 2rem;
+  }
+  .faq-cta-card {
+    padding: 28px 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 64px 1.25rem;
+  }
+  .faq-container {
+    gap: 40px;
+  }
+  .faq-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+    gap: 20px;
+  }
+  .faq-cta-form {
+    width: 100%;
+    max-width: 100%;
+    flex: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-question {
+    padding: 16px 18px;
+    font-size: 0.9375rem;
+  }
+  .faq-answer.is-open > p {
+    padding: 14px 18px 18px;
+  }
+  .faq-cta-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .faq-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* ============================================================
+   END FAQ SECTION
+   ============================================================ */
+
+   /* ============================================================
+   APPLICATIONS SECTION — append to styles.css
+   ============================================================ */
+
+/* ── Section wrapper ── */
+.apps-section {
+  background: #ffffff;
+  padding: 50px 0 0;
+  overflow: hidden;
+}
+
+.apps-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Header row ── */
+.apps-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 0 2rem 48px;
+  flex-wrap: wrap;
+}
+
+.apps-header-left {
+  flex: 1 1 360px;
+}
+
+.apps-heading {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+  color: #111827;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+}
+
+.apps-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: #6B7280;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 420px;
+}
+
+/* ── Prev / Next buttons ── */
+.apps-nav-btns {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 8px;
+}
+
+.apps-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+  background: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease,
+              color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.apps-nav-btn:hover {
+  background: #2B3990;
+  border-color: #2B3990;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(43, 57, 144, 0.28);
+  transform: translateY(-1px);
+}
+
+.apps-nav-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.apps-nav-btn:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ── Track wrapper — full width, clips overflow ── */
+.apps-track-wrap {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 80px;
+  /* left inset to align first card with header text */
+  padding-left: 2rem;
+  box-sizing: border-box;
+  /* allow rightward overflow to peek */
+  overflow-x: clip;
+}
+
+/* ── Scrollable track ── */
+.apps-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  /* prevent track shrink */
+  width: max-content;
+}
+
+/* ── Individual card ── */
+.apps-card {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.apps-card:hover,
+.apps-card:focus-visible {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+}
+
+/* ── Card background image ── */
+.apps-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.apps-card:hover .apps-card-img {
+  transform: scale(1.06);
+}
+
+/* ── Gradient overlay — dark at bottom for text legibility ── */
+.apps-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.18) 40%,
+    rgba(0, 0, 0, 0.72) 75%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+  transition: opacity 0.25s ease;
+}
+
+.apps-card:hover .apps-card-overlay {
+  opacity: 0.9;
+}
+
+/* ── Card text content ── */
+.apps-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 24px;
+  z-index: 2;
+}
+
+.apps-card-title {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #ffffff;
+  margin: 0 0 8px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.apps-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.65;
+  margin: 0;
+  /* Hide desc by default, reveal on hover */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: max-height 0.35s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.apps-card:hover .apps-card-desc,
+.apps-card:focus-visible .apps-card-desc {
+  max-height: 120px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Blue accent tag on each card ── */
+.apps-card-content::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #2B3990;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .apps-section {
+    padding-top: 72px;
+  }
+  .apps-card {
+    width: 280px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .apps-section {
+    padding-top: 64px;
+  }
+  .apps-header {
+    padding-bottom: 36px;
+  }
+  .apps-card {
+    width: 260px;
+    height: 360px;
+  }
+  /* Always show desc on mobile (no hover) */
+  .apps-card-desc {
+    max-height: 120px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .apps-track-wrap {
+    padding-left: 1.25rem;
+  }
+  .apps-card {
+    width: 240px;
+    height: 320px;
+  }
+}
+/* ============================================================
+   END APPLICATIONS SECTION
+   ============================================================ */
+  
