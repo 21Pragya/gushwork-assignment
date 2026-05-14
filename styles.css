@@ -2,7 +2,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter';
   
   color: #111827;
 }
@@ -42,7 +42,7 @@ body {
 }
 
 .header__nav > a {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #111827;
@@ -75,7 +75,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #111827;
