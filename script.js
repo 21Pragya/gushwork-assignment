@@ -277,3 +277,51 @@ thumbs.forEach(thumb => {
 /* ============================================================
    END APPLICATIONS SECTION
    ============================================================ */
+
+// ── MANUFACTURING PROCESS TABS ──
+const tabs = document.querySelectorAll('.process-tab');
+const panels = document.querySelectorAll('.process-panel');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const index = tab.dataset.tab;
+
+    // Update tabs
+    tabs.forEach(t => {
+      t.classList.remove('process-tab--active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('process-tab--active');
+    tab.setAttribute('aria-selected', 'true');
+
+    // Update panels
+    panels.forEach(p => p.classList.remove('is-active'));
+    document.querySelector(`.process-panel[data-panel="${index}"]`)
+            .classList.add('is-active');
+  });
+});
+
+// ── TESTIMONIALS DRAG TO SCROLL ──
+const testimonialsTrack = document.querySelector('.testimonials-track');
+
+let isTestimonialDragging = false;
+let testimonialStartX = 0;
+let testimonialScrollLeft = 0;
+
+testimonialsTrack.addEventListener('mousedown', (e) => {
+  isTestimonialDragging = true;
+  testimonialStartX = e.clientX;
+  testimonialScrollLeft = testimonialsTrack.scrollLeft;
+  testimonialsTrack.style.scrollBehavior = 'auto';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isTestimonialDragging) return;
+  const delta = e.clientX - testimonialStartX;
+  testimonialsTrack.scrollLeft = testimonialScrollLeft - delta;
+});
+
+document.addEventListener('mouseup', () => {
+  isTestimonialDragging = false;
+  testimonialsTrack.style.scrollBehavior = 'smooth';
+});
