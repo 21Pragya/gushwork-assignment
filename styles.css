@@ -178,7 +178,86 @@ body {
 
 /* ── BREADCRUMB ── */
 
+/* ── IMAGE ZOOM ── */
 
+/* Wrap carousel + zoom preview together */
+.carousel {
+  position: relative;
+}
+
+/* Cursor crosshair on hover */
+.carousel__main {
+  position: relative;
+  cursor: crosshair;
+}
+
+/* The small lens box that follows the cursor */
+.zoom-lens {
+  display: none;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 2px solid #2B3990;
+  border-radius: 4px;
+  background: rgba(43, 57, 144, 0.1);
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.5);
+}
+
+/* The zoomed preview panel */
+.zoom-preview {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 1rem);
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  z-index: 100;
+  background: #fff;
+  pointer-events: none;
+}
+
+/* The zoomed image inside the preview */
+.zoom-preview__img {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 0 0; /* set by JS */
+}
+
+/* Show on hover */
+.carousel__main:hover .zoom-lens {
+  display: block;
+}
+.carousel__main:hover ~ .zoom-preview {
+  display: block;
+}
+
+/* On smaller screens — show preview below instead of right */
+@media (max-width: 1100px) {
+  .zoom-preview {
+    left: 0;
+    top: calc(100% + 0.5rem);
+    width: 100%;
+    height: 260px;
+  }
+}
+
+/* Hide zoom on mobile entirely */
+@media (max-width: 768px) {
+  .zoom-lens,
+  .zoom-preview {
+    display: none !important;
+  }
+  .carousel__main {
+    cursor: default;
+  }
+}
 .breadcrumb {
   max-width: 1200px;
 
@@ -433,6 +512,7 @@ body {
   border-bottom: 1px solid rgba(0,0,0,0.06);
   padding: 1.25rem 0;
   overflow: hidden;
+  
 }
 
 .ticker-section__label {
@@ -461,7 +541,7 @@ body {
 }
 
 .ticker-inner img {
-  height: 48px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   filter: grayscale(20%);
@@ -648,19 +728,19 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  border: 2px solid rgba(0,0,0,0.06);
+  border: 1px solid #CFD1D4;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .feature-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px #1B1C1D0A;
 }
 
 .feature-card__icon {
   width: 40px;
   height: 40px;
-  background: #EEF0FB;
+  
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -700,13 +780,13 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 0.75rem 2rem;
-  background: transparent;
+  background: #2B3990;
   border: 2px solid #2B3990;
   border-radius: 8px;
   font-family: 'Urbanist', sans-serif;
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: #2B3990;
+  font-weight: 500;
+  color: #FFFFFF;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }
@@ -736,7 +816,7 @@ body {
 /* ── Section wrapper ── */
 .faq-section {
 
-  padding: 96px 2rem;
+  padding: 40px 2rem;
 }
 
 .faq-container {
@@ -749,9 +829,7 @@ body {
 
 /* ── Section header ── */
 .faq-header {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
+
 }
 
 .faq-heading {
@@ -771,7 +849,7 @@ body {
 .faq-subtext {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
-  color: #6B7280;
+  color: #535A61;
   line-height: 1.7;
   margin: 0;
 }
@@ -834,7 +912,7 @@ body {
 }
 
 .faq-question[aria-expanded="true"] {
-  color: #2B3990;
+  color: #000000;
 }
 
 /* ── Chevron icon ── */

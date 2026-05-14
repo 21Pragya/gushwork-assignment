@@ -65,11 +65,19 @@
     <div class="carousel">
 
       <!-- Main Image -->
-      <div class="carousel__main">
-        <button class="carousel__btn carousel__btn--prev" id="prevBtn" aria-label="Previous image">&#8592;</button>
-        <img src="assets/images/Gushwok_image.jpg" alt="Product image" class="carousel__img" id="mainImage" />
-        <button class="carousel__btn carousel__btn--next" id="nextBtn" aria-label="Next image">&#8594;</button>
-      </div>
+     <!-- Main Image -->
+<div class="carousel__main" id="carouselMain">
+  <button class="carousel__btn carousel__btn--prev" id="prevBtn" aria-label="Previous image">&#8592;</button>
+  <img src="assets/images/Gushwok_image.jpg" alt="Product image" class="carousel__img" id="mainImage" />
+  <button class="carousel__btn carousel__btn--next" id="nextBtn" aria-label="Next image">&#8594;</button>
+  <!-- Zoom lens that follows cursor -->
+  <div class="zoom-lens" id="zoomLens"></div>
+</div>
+
+<!-- Zoom preview box — appears to the right -->
+<div class="zoom-preview" id="zoomPreview">
+  <div class="zoom-preview__img" id="zoomPreviewImg"></div>
+</div>
 
       <!-- Thumbnails -->
       <div class="carousel__thumbs" id="thumbsContainer">
@@ -166,6 +174,8 @@
       <img src="assets/images/euroflex.png" alt="Euroflex" />
       <img src="assets/images/euroflex.png" alt="Euroflex" />
       <img src="assets/images/euroflex.png" alt="Euroflex" />
+      <img src="assets/images/euroflex.png" alt="Euroflex" />
+       <img src="assets/images/euroflex.png" alt="Euroflex" />
       <img src="assets/images/euroflex.png" alt="Euroflex" />
     </div>
   </div>
@@ -353,11 +363,7 @@
       <h2 class="faq-heading">
         <span class="faq-heading-accent">Frequently</span> Asked Questions
       </h2>
-      <p class="faq-subtext">
-        Everything you need to know about Mangalam HDPE Pipes — from technical specs
-        to delivery timelines. Can't find your answer?
-        <a href="#contact" class="faq-inline-link">Reach out to our team.</a>
-      </p>
+      
     </div>
 
     <!-- Accordion -->
@@ -532,6 +538,7 @@
         </div>
 
         <div class="apps-card" role="listitem" tabindex="0">
+          
           <img src="assets/images/Gushwok_image.jpg" alt="Telecom Ducting" class="apps-card-img" loading="lazy">
           <div class="apps-card-overlay"></div>
           <div class="apps-card-content">

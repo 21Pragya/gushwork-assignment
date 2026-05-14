@@ -26,7 +26,7 @@ hamburger.addEventListener('click', () => {
   hamburger.setAttribute('aria-expanded', isOpen);
 });
 
-// ── IMAGE CAROUSEL ──
+// ── IMAGE CAROUSEL + ZOOM ──
 const images = [
   'assets/images/Gushwok_image.jpg',
   'assets/images/Gushwok_image.jpg',
@@ -36,32 +36,103 @@ const images = [
 ];
 
 let currentIndex = 0;
-const mainImage = document.getElementById('mainImage');
-const thumbs = document.querySelectorAll('.thumb');
+const mainImage     = document.getElementById('mainImage');
+const thumbs        = document.querySelectorAll('.thumb');
+const carouselMain  = document.getElementById('carouselMain');
+const zoomLens      = document.getElementById('zoomLens');
+const zoomPreview   = document.getElementById('zoomPreview');
+const zoomPreviewImg= document.getElementById('zoomPreviewImg');
 
+/* ── Go to slide ── */
 function goToSlide(index) {
   currentIndex = index;
   mainImage.src = images[index];
   thumbs.forEach(t => t.classList.remove('thumb--active'));
   thumbs[index].classList.add('thumb--active');
+  // Update zoom background when image changes
+  updateZoomBackground();
 }
 
+/* ── Prev / Next ── */
 document.getElementById('prevBtn').addEventListener('click', () => {
-  const newIndex = (currentIndex - 1 + images.length) % images.length;
-  goToSlide(newIndex);
+  goToSlide((currentIndex - 1 + images.length) % images.length);
 });
-
 document.getElementById('nextBtn').addEventListener('click', () => {
-  const newIndex = (currentIndex + 1) % images.length;
-  goToSlide(newIndex);
+  goToSlide((currentIndex + 1) % images.length);
 });
 
+/* ── Thumbnail click ── */
 thumbs.forEach(thumb => {
   thumb.addEventListener('click', () => {
     goToSlide(parseInt(thumb.dataset.index));
   });
 });
 
+/* ── Set zoom background image ── */
+function updateZoomBackground() {
+  zoomPreviewImg.style.backgroundImage = `url('${mainImage.src}')`;
+}
+
+/* ── Zoom on mouse move ── */
+carouselMain.addEventListener('mousemove', (e) => {
+  const rect      = mainImage.getBoundingClientRect();
+  const lensW     = zoomLens.offsetWidth;
+  const lensH     = zoomLens.offsetHeight;
+  const zoomLevel = 2.8; // how much to magnify
+
+  // Mouse position relative to image
+  let x = e.clientX - rect.left;
+  let y = e.clientY - rect.top;
+
+  // Keep lens inside image bounds
+  let lensX = x - lensW / 2;
+  let lensY = y - lensH / 2;
+  lensX = Math.max(0, Math.min(lensX, rect.width  - lensW));
+  lensY = Math.max(0, Math.min(lensY, rect.height - lensH));
+
+  // Position the lens
+  zoomLens.style.left = lensX + 'px';
+  zoomLens.style.top  = lensY + 'px';
+
+  // Calculate background position for zoomed preview
+  const previewW = zoomPreview.offsetWidth;
+  const previewH = zoomPreview.offsetHeight;
+
+  const bgW = rect.width  * zoomLevel;
+  const bgH = rect.height * zoomLevel;
+
+  // The ratio of lens position to image size maps to bg position
+  const bgX = -(lensX / rect.width)  * bgW;
+  const bgY = -(lensY / rect.height) * bgH;
+
+  zoomPreviewImg.style.backgroundSize     = `${bgW}px ${bgH}px`;
+  zoomPreviewImg.style.backgroundPosition = `${bgX}px ${bgY}px`;
+});
+
+/* ── Show/hide zoom on enter/leave ── */
+carouselMain.addEventListener('mouseenter', () => {
+  updateZoomBackground();
+  zoomLens.style.display     = 'block';
+  zoomPreview.style.display  = 'block';
+});
+
+carouselMain.addEventListener('mouseleave', () => {
+  zoomLens.style.display    = 'none';
+  zoomPreview.style.display = 'none';
+});
+
+/* ── Hide zoom when hovering prev/next buttons ── */
+document.getElementById('prevBtn').addEventListener('mouseenter', () => {
+  zoomLens.style.display    = 'none';
+  zoomPreview.style.display = 'none';
+});
+document.getElementById('nextBtn').addEventListener('mouseenter', () => {
+  zoomLens.style.display    = 'none';
+  zoomPreview.style.display = 'none';
+});
+
+// Initial zoom background
+updateZoomBackground();
 /* ============================================================
    FAQ SECTION — append to script.js
    ============================================================ */
